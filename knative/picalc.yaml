@@ -1,12 +1,21 @@
-apiVersion: serving.knative.dev/v1alpha1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: picalc
-  namespace: default
+  name: my-tekton-deployment
+  namespace: tekton-pipelines
 spec:
-  runLatest:
-    configuration:
-      revisionTemplate:
-        spec:
-          container:
-            image: __IMAGE__
+  selector:
+    matchLabels:
+      app: my-tekton-app
+  template:
+    metadata:
+      labels:
+        app: my-tekton-app
+    spec:
+      containers:
+      - name: my-tekton-app
+        image: __IMAGE__
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

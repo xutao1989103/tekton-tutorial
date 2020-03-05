@@ -13,7 +13,7 @@ spec:
     - name: pathToYamlFile
       value: "knative/picalc.yaml"
     - name: imageUrl
-      value: <REGISTRY>/<NAMESPACE>/picalc
+      value: registry.cn-hangzhou.aliyuncs.com/xutao/picalc
     - name: imageTag
       value: "1.0"
   serviceAccountName: pipeline-account
